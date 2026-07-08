@@ -1,6 +1,6 @@
 {
 	"name": "@sindresorhus/gifkit",
-	"version": "0.0.0",
+	"version": "0.1.0",
 	"description": "Encode, decode, and render GIF files",
 	"license": "MIT",
 	"repository": "sindresorhus/gifkit",
