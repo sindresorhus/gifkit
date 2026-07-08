@@ -1,0 +1,54 @@
+{
+	"name": "@sindresorhus/gifkit",
+	"version": "0.0.0",
+	"description": "Encode, decode, and render GIF files",
+	"license": "MIT",
+	"repository": "sindresorhus/gifkit",
+	"funding": "https://github.com/sponsors/sindresorhus",
+	"author": {
+		"name": "Sindre Sorhus",
+		"email": "sindresorhus@gmail.com",
+		"url": "https://sindresorhus.com"
+	},
+	"type": "module",
+	"exports": {
+		"types": "./index.d.ts",
+		"default": "./index.js"
+	},
+	"sideEffects": false,
+	"engines": {
+		"node": ">=22"
+	},
+	"scripts": {
+		"benchmark": "node benchmark.js",
+		"test": "xo && node --test && tsd"
+	},
+	"files": [
+		"index.js",
+		"index.d.ts",
+		"source"
+	],
+	"keywords": [
+		"gif",
+		"graphics",
+		"image",
+		"encoder",
+		"decoder",
+		"render"
+	],
+	"devDependencies": {
+		"jimp": "^1.6.1",
+		"tempy": "^3.2.0",
+		"tsd": "^0.33.0",
+		"xo": "^4.0.0"
+	},
+	"xo": {
+		"rules": {
+			"no-bitwise": "off",
+			"max-lines": "off",
+			"unicorn/no-break-in-nested-loop": "off",
+			"unicorn/no-useless-spread": "off",
+			"node-test/no-conditional-assertion": "off"
+		}
+	}
+}
