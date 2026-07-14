@@ -10,6 +10,9 @@ This package is a small JavaScript GIF toolkit. It can decode GIF87a/GIF89a file
 npm install @sindresorhus/gifkit
 ```
 
+> [!NOTE]
+> This package works in both Node.js and the browser. It has no dependencies and uses only standard JavaScript and Web APIs.
+
 ## Usage
 
 ```js

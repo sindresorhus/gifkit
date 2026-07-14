@@ -1,4 +1,3 @@
-import {types as utilTypes} from 'node:util';
 import {
 	asciiTextEncoder,
 	disposalMethodNames,
@@ -10,13 +9,14 @@ const typedArrayPrototype = Object.getPrototypeOf(Uint8Array.prototype);
 const typedArrayBufferGetter = Object.getOwnPropertyDescriptor(typedArrayPrototype, 'buffer').get;
 const typedArrayByteOffsetGetter = Object.getOwnPropertyDescriptor(typedArrayPrototype, 'byteOffset').get;
 const typedArrayByteLengthGetter = Object.getOwnPropertyDescriptor(typedArrayPrototype, 'byteLength').get;
+const typedArrayNameGetter = Object.getOwnPropertyDescriptor(typedArrayPrototype, Symbol.toStringTag).get;
 
 export function isUint8Array(value) {
-	return utilTypes.isUint8Array(value);
+	return typedArrayNameGetter.call(value) === 'Uint8Array';
 }
 
 export function isUint8ClampedArray(value) {
-	return utilTypes.isUint8ClampedArray(value);
+	return typedArrayNameGetter.call(value) === 'Uint8ClampedArray';
 }
 
 export function toUint8ArrayView(value) {
