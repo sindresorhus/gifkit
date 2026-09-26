@@ -45,7 +45,7 @@ export function encodeAnimatedGIF(frames, options = {}) {
 	const quality = requireFiniteNumberInRange(options.quality ?? 0.8, 0, 1, 'quality');
 	rejectRenamedLoopCount(options);
 	const hasFrameDelays = frames.some(frame => isAnimationFrameObject(frame) && frame.delay !== undefined);
-	if (options.fps !== undefined && hasFrameDelays) {
+	if (hasFrameDelays && options.fps !== undefined) {
 		throw new Error('fps cannot be combined with per-frame delay');
 	}
 
@@ -94,10 +94,8 @@ export function encodeAnimatedGIF(frames, options = {}) {
 		width,
 		height,
 		blocks,
+		...(options.playCount !== undefined && {playCount: options.playCount}),
 	};
-	if (options.playCount !== undefined) {
-		gif.playCount = options.playCount;
-	}
 
 	return encodeGIF(gif);
 }

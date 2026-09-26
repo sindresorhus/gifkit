@@ -9,27 +9,21 @@ export function renderTotalPlayCount(playCount) {
 
 export function normalizePlayCount(value, name) {
 	// Use a string sentinel because `Infinity` serializes to `null` in JSON.
-	if (value === 'forever') {
-		return value;
-	}
-
-	return requireIntegerInRange(value, 1, 0x1_00_00, name);
+	return value === 'forever'
+		? value
+		: requireIntegerInRange(value, 1, 0x1_00_00, name);
 }
 
 export function encodeNetscapeLoopCount(playCount, name) {
-	if (playCount === 'forever') {
-		return 0;
-	}
-
-	return requireIntegerInRange(playCount, 1, 0x1_00_00, name) - 1;
+	return playCount === 'forever'
+		? 0
+		: requireIntegerInRange(playCount, 1, 0x1_00_00, name) - 1;
 }
 
 export function encodeExplicitNetscapeLoopCount(playCount, name) {
-	if (playCount === 'forever') {
-		return 0;
-	}
-
-	return requireIntegerInRange(playCount, 2, 0x1_00_00, name) - 1;
+	return playCount === 'forever'
+		? 0
+		: requireIntegerInRange(playCount, 2, 0x1_00_00, name) - 1;
 }
 
 export function decodeNetscapeLoopCount(loopCount) {

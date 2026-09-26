@@ -208,11 +208,9 @@ function getPayloadInputLength(value) {
 		return toUint8ArrayView(value).length;
 	}
 
-	if (typeof value === 'string' || Array.isArray(value)) {
-		return value.length;
-	}
-
-	return 0;
+	return typeof value === 'string' || Array.isArray(value)
+		? value.length
+		: 0;
 }
 
 function writeGIFHeader(byteWriter, gif) {
@@ -484,9 +482,9 @@ function normalizeAppExtensionBlock(block) {
 		: encodeExplicitNetscapeLoopCount(block.playCount, 'applicationExtension.playCount');
 
 	const data = block.data ?? (
-		identifier === netscapeLoopingAppIdentifier
+		loopCount !== undefined
+		&& identifier === netscapeLoopingAppIdentifier
 		&& areBytesEqual(authenticationCode, netscapeLoopingAppAuthenticationCodeBytes)
-		&& loopCount !== undefined
 			? Uint8Array.of(0x01, loopCount & 0xFF, loopCount >> 8)
 			: new Uint8Array()
 	);
@@ -520,7 +518,7 @@ function normalizeImageBlock(block, globalColorTable) {
 		indexedPixels: isRGBAImage ? undefined : block.pixels,
 	};
 
-	if (!isRGBAImage && normalizedImageBlock.colorTable === undefined && globalColorTable === undefined) {
+	if (!isRGBAImage && globalColorTable === undefined && normalizedImageBlock.colorTable === undefined) {
 		throw new Error('An image block requires a color table or a global color table');
 	}
 

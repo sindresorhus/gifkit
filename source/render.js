@@ -277,8 +277,8 @@ function renderImageBlockToFrame(canvasPixels, imageBlock, renderContext) {
 	const activeColorTableUint32 = isLittleEndian ? createColorTableUint32(activeColorTable) : undefined;
 
 	if (
-		renderContext.strict
-		&& transparentColorIndex !== undefined
+		transparentColorIndex !== undefined
+		&& renderContext.strict
 		&& transparentColorIndex >= activeColorTable.length / 3
 	) {
 		throw new Error(`Transparent color index ${transparentColorIndex} exceeds the active color table`);

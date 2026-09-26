@@ -80,7 +80,7 @@ export function normalizeRGBAImageData(pixels, block, graphicControlExtension) {
 		transparentColor: block.transparentColor ?? [0, 0, 0],
 	});
 
-	const normalizedGraphicControlExtension = indexedImageData.transparentColorIndex !== undefined || graphicControlExtension !== undefined
+	const normalizedGraphicControlExtension = graphicControlExtension !== undefined || indexedImageData.transparentColorIndex !== undefined
 		? {
 			disposalMethod: graphicControlExtension?.disposalMethod ?? 'unspecified',
 			delayInHundredthsOfASecond: graphicControlExtension?.delayInHundredthsOfASecond ?? 0,

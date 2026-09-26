@@ -294,8 +294,8 @@ function readImageDescriptor(byteReader, {logicalScreenWidth, logicalScreenHeigh
 function validateTransparentColorIndex(graphicControlExtension, activeColorTable, {strict}) {
 	if (
 		strict
-		&& graphicControlExtension?.transparentColorIndex !== undefined
 		&& activeColorTable !== undefined
+		&& graphicControlExtension?.transparentColorIndex !== undefined
 		&& graphicControlExtension.transparentColorIndex >= activeColorTable.length / 3
 	) {
 		throw new Error('Transparent color index must be inside the active color table in strict mode');

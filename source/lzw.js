@@ -178,11 +178,9 @@ export function encodeCompressedIndexStream(indexedPixels, minimumCodeSize) {
 	}
 
 	// Small GIFs should not pay for the dense 2 MiB lookup table; larger images usually make up that cost by avoiding Map hashing in the LZW hot path.
-	if (indexedPixels.length < 4096) {
-		return encodeCompressedIndexStreamWithMap(indexedPixels, minimumCodeSize);
-	}
-
-	return encodeCompressedIndexStreamWithDenseLookup(indexedPixels, minimumCodeSize);
+	return indexedPixels.length < 4096
+		? encodeCompressedIndexStreamWithMap(indexedPixels, minimumCodeSize)
+		: encodeCompressedIndexStreamWithDenseLookup(indexedPixels, minimumCodeSize);
 }
 
 function encodeCompressedIndexStreamWithMap(indexedPixels, minimumCodeSize) {

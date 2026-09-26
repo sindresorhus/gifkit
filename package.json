@@ -5,11 +5,7 @@
 	"license": "MIT",
 	"repository": "sindresorhus/gifkit",
 	"funding": "https://github.com/sponsors/sindresorhus",
-	"author": {
-		"name": "Sindre Sorhus",
-		"email": "sindresorhus@gmail.com",
-		"url": "https://sindresorhus.com"
-	},
+	"author": "Sindre Sorhus <sindresorhus@gmail.com> (https://sindresorhus.com)",
 	"type": "module",
 	"exports": {
 		"types": "./index.d.ts",
@@ -40,7 +36,7 @@
 		"jimp": "^1.6.1",
 		"tempy": "^3.2.0",
 		"tsd": "^0.33.0",
-		"xo": "^4.0.0"
+		"xo": "^5.0.1"
 	},
 	"xo": {
 		"rules": {
